@@ -1,0 +1,31 @@
+{
+  "exercises": [
+    {
+      "name": "a1",
+      "result": false
+    },
+    {
+      "name": "a4",
+      "result": false
+    },
+    {
+      "name": "a0",
+      "result": false
+    },
+    {
+      "name": "a3",
+      "result": false
+    },
+    {
+      "name": "a2",
+      "result": false
+    }
+  ],
+  "user_name": null,
+  "statistics": {
+    "total_exercations": 5,
+    "total_succeeds": 1,
+    "total_failures": 4,
+    "total_time": 5
+  }
+}

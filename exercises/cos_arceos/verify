@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ $# = 0 ]; then
+    echo "Please input steps, such as ./verify a0 a1"
+    exit 0;
+fi
+
+for step in "$@"; do
+    case $step in
+        a0)
+            make A=exercises/a0 run | tee /tmp/a0
+            ;;
+        a1)
+            make A=exercises/a1 run | tee /tmp/a1
+            ;;
+        a2)
+            make A=exercises/a2 run | tee /tmp/a2
+            ;;
+        a3)
+            make A=exercises/a3 run | tee /tmp/a3
+            ;;
+        a4)
+            make A=exercises/a4 NET=y run | tee /tmp/a4
+            ;;
+        *)
+            echo 'no such step'
+            ;;
+    esac
+done

@@ -1,0 +1,83 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "crates/allocator",
+    "crates/arm_gic",
+    "crates/arm_pl011",
+    "crates/axerrno",
+    "crates/axfs_devfs",
+    "crates/axfs_ramfs",
+    "crates/axfs_vfs",
+    "crates/axio",
+    "crates/capability",
+    "crates/crate_interface",
+    "crates/driver_block",
+    "crates/driver_common",
+    "crates/driver_display",
+    "crates/driver_net",
+    "crates/driver_pci",
+    "crates/driver_virtio",
+    "crates/flatten_objects",
+    "crates/handler_table",
+    "crates/kernel_guard",
+    "crates/lazy_init",
+    "crates/linked_list",
+    "crates/memory_addr",
+    "crates/page_table",
+    "crates/page_table_entry",
+    "crates/percpu",
+    "crates/percpu_macros",
+    "crates/ratio",
+    "crates/scheduler",
+    "crates/slab_allocator",
+    "crates/spinlock",
+    "crates/timer_list",
+    "crates/tuple_for_each",
+
+    "modules/axalloc",
+    "modules/axconfig",
+    "modules/axdisplay",
+    "modules/axdriver",
+    "modules/axfs",
+    "modules/axhal",
+    "modules/axlog",
+    "modules/axnet",
+    "modules/axruntime",
+    "modules/axsync",
+    "modules/axtask",
+
+    "api/axfeat",
+    "api/arceos_api",
+
+    "ulib/axstd",
+    "ulib/axlibc",
+
+    "apps/display",
+    "apps/exception",
+    "apps/helloworld",
+    "apps/memtest",
+    "apps/fs/shell",
+    "apps/net/echoserver",
+    "apps/net/httpclient",
+    "apps/net/httpserver",
+    "apps/net/udpserver",
+    "apps/net/bwbench",
+    "apps/task/parallel",
+    "apps/task/sleep",
+    "apps/task/yield",
+    "apps/task/priority",
+    "apps/task/tls",
+
+    "exercises/a0",
+    "exercises/a1",
+    "exercises/a2",
+    "exercises/a3",
+    "exercises/a4",
+]
+
+[profile.release]
+lto = true
+
+[patch.crates-io]
+crate_interface = { path = "crates/crate_interface" }

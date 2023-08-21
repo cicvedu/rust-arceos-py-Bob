@@ -1,0 +1,105 @@
+# INTRO
+
+# # TYPE CONVERSIONS
+
+# [[exercises]]
+# name = "using_as"
+# path = "exercises/conversions/using_as.rs"
+# mode = "test"
+# hint = """
+# Use the `as` operator to cast one of the operands in the last line of the
+# `average` function into the expected return type."""
+
+
+# [[exercises]]
+# name = "from_str"
+# path = "exercises/conversions/from_str.rs"
+# mode = "test"
+# hint = """
+# The implementation of FromStr should return an Ok with a Person object,
+# or an Err with an error if the string is not valid.
+
+# This is almost like the `from_into` exercise, but returning errors instead
+# of falling back to a default value.
+
+# Look at the test cases to see which error variants to return.
+
+# Another hint: You can use the `map_err` method of `Result` with a function
+# or a closure to wrap the error from `parse::<usize>`.
+
+# Yet another hint: If you would like to propagate errors by using the `?`
+# operator in your solution, you might want to look at
+# https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html
+# """
+
+# [[exercises]]
+# name = "try_from_into"
+# path = "exercises/conversions/try_from_into.rs"
+# mode = "test"
+# hint = """
+# Follow the steps provided right before the `TryFrom` implementation.
+# You can also use the example at https://doc.rust-lang.org/std/convert/trait.TryFrom.html
+
+# Is there an implementation of `TryFrom` in the standard library that
+# can both do the required integer conversion and check the range of the input?
+
+# Another hint: Look at the test cases to see which error variants to return.
+
+# Yet another hint: You can use the `map_err` or `or` methods of `Result` to
+# convert errors.
+
+# Yet another hint: If you would like to propagate errors by using the `?`
+# operator in your solution, you might want to look at
+# https://doc.rust-lang.org/stable/rust-by-example/error/multiple_error_types/reenter_question_mark.html
+
+# Challenge: Can you make the `TryFrom` implementations generic over many integer types?"""
+
+# [[exercises]]
+# name = "as_ref_mut"
+# path = "exercises/conversions/as_ref_mut.rs"
+# mode = "test"
+# hint = """
+# Add AsRef<str> or AsMut<u32> as a trait bound to the functions."""
+
+
+# ARCEOS 
+
+[[exercises]]
+name = "a0"
+dirname = "a0"
+path = "exercises/cos_arceos"
+mode = "arceos"
+result = "[ArceOS Tutorial]: A0 okay!"
+hint = ""
+
+[[exercises]]
+name = "a1"
+dirname = "a1"
+path = "exercises/cos_arceos"
+mode = "arceos"
+result = "[ArceOS Tutorial]: A1 okay!"
+hint = ""
+
+[[exercises]]
+name = "a2"
+dirname = "a2"
+path = "exercises/cos_arceos"
+mode = "arceos"
+result = "[ArceOS Tutorial]: A2 okay!"
+hint = ""
+
+[[exercises]]
+name = "a3"
+dirname = "a3"
+path = "exercises/cos_arceos"
+mode = "arceos"
+result = "[ArceOS Tutorial]: A3 okay!"
+hint = ""
+
+[[exercises]]
+name = "a4"
+dirname = "a4"
+path = "exercises/cos_arceos"
+mode = "arceos"
+result = "[ArceOS Tutorial]: A4 okay!"
+hint = ""
