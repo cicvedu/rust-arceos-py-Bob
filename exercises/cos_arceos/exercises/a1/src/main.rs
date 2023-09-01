@@ -8,7 +8,6 @@ extern crate axstd as std;
 use std::collections::BTreeMap;
 use std::vec::Vec;
 
-// I AM NOT DONE
 
 fn test_vec() {
     const N: usize = 3;

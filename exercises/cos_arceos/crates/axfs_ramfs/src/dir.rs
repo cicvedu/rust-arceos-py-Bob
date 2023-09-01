@@ -4,6 +4,7 @@ use alloc::{string::String, vec::Vec};
 
 use axfs_vfs::{VfsDirEntry, VfsNodeAttr, VfsNodeOps, VfsNodeRef, VfsNodeType};
 use axfs_vfs::{VfsError, VfsResult};
+use log::warn;
 use spin::RwLock;
 
 use crate::file::FileNode;
@@ -30,12 +31,10 @@ impl DirNode {
         *self.parent.write() = parent.map_or(Weak::<Self>::new() as _, Arc::downgrade);
     }
 
-    /// Returns a string list of all entries in this directory.
     pub fn get_entries(&self) -> Vec<String> {
         self.children.read().keys().cloned().collect()
     }
 
-    /// Checks whether a node with the given name exists in this directory.
     pub fn exist(&self, name: &str) -> bool {
         self.children.read().contains_key(name)
     }
@@ -80,6 +79,7 @@ impl VfsNodeOps for DirNode {
 
     fn lookup(self: Arc<Self>, path: &str) -> VfsResult<VfsNodeRef> {
         let (name, rest) = split_path(path);
+        warn!("lookup name={name}, rest={rest:?}");
         let node = match name {
             "" | "." => Ok(self.clone() as VfsNodeRef),
             ".." => self.parent().ok_or(VfsError::NotFound),
@@ -165,8 +165,31 @@ impl VfsNodeOps for DirNode {
         }
     }
 
-    fn rename(&self, _src: &str, _dst: &str) -> VfsResult {
-        todo!("Implement rename for ramfs!");
+    /// self is src's parent dir
+    fn rename(&self, src: &str, dst: &str) -> VfsResult {
+        use crate::alloc::borrow::ToOwned;
+        warn!("rename(src: {src}, dst: {dst})");
+
+        let mut current = self.parent();
+        let mut pre = current.clone();
+        while let Some(ref x) = current {
+            pre = current.clone();
+            current = x.parent();
+        }
+       
+        let dst_parent = self;
+
+        let (src_dir, src_name) = split_path(src);
+        let (dst_dir, dst_name) = split_path(dst);
+        warn!("src_dir={src_dir} src_name={src_name:?} dst_dir={dst_dir} dst_name={dst_name:?}");
+
+        // let mut children = self.children.write();
+        let entry = self.children.write().remove(src_dir).unwrap();
+        dst_parent
+            .children
+            .write()
+            .insert(dst_name.unwrap().to_owned(), entry);
+        Ok(())
     }
 
     axfs_vfs::impl_vfs_dir_default! {}

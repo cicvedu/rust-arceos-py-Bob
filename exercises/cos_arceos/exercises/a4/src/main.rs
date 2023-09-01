@@ -8,7 +8,6 @@ extern crate axstd as std;
 use std::io::{self, prelude::*};
 use std::net::{TcpStream, ToSocketAddrs};
 
-
 // I AM NOT DONE
 
 const DEST: &str = "49.12.234.183:80";

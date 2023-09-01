@@ -9,10 +9,10 @@
 #![cfg_attr(not(test), no_std)]
 #![feature(const_mut_refs)]
 
-mod simple;
 mod cfs;
 mod fifo;
 mod round_robin;
+mod simple;
 
 #[macro_use]
 extern crate log;
@@ -22,10 +22,10 @@ mod tests;
 
 extern crate alloc;
 
-pub use simple::{SimpleScheduler, SimpleTask};
 pub use cfs::{CFSTask, CFScheduler};
 pub use fifo::{FifoScheduler, FifoTask};
 pub use round_robin::{RRScheduler, RRTask};
+pub use simple::{SimpleScheduler, SimpleTask};
 
 /// The base scheduler trait that all schedulers should implement.
 ///

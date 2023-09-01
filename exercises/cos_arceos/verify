@@ -1,4 +1,5 @@
 #!/bin/sh
+
 if [ $# = 0 ]; then
     echo "Please input steps, such as ./verify a0 a1"
     exit 0;
